@@ -2,16 +2,22 @@
 const inquirer = require('inquirer');
 inquirer
   .prompt([{
-    type: 'input',
-    name: 'Project Title',
-    message: 'What is the title of your Project?',
-    default: 'My Github Project'
+      type: 'input',
+      name: 'Project Title',
+      message: 'What is the title of your Project?',
+      default: 'My Github Project'
     },
     {
       type: 'input',
       name: 'Project Description',
       message: 'What is the description of your project?',
       default: 'My project does some pretty cool stuff, as described'
+      },
+    {
+      type: 'input',
+      name: 'Project Installation',
+      message: 'How is your project installed?',
+      default: 'Type in "install sumtin'
       },
     // /* Pass your questions in here */
     // questions
