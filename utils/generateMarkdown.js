@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {}
@@ -11,10 +13,31 @@ function renderLicenseLink(license) {}
 function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
 
-`;
+
+
+
+
+
+
+
+function generateMarkdown(answers) {
+  console.log(answers.Project_Title, answers.Project_Description, answers.Project_Installation);
+  let generatedPage = `
+  # ${answers.Project_Title}\n
+  ## Project Description \n
+  ${answers.Project_Description}\n
+  ## How to install this project \n
+   ${answers.Project_Installation}\n
+  `;
+  
+  fs.writeFile('freshReadMe.md', generatedPage, (err) => {
+  if (err) 
+   console.error(err); 
+  else {
+    console.log('Success! Check your folder for a file called freshReadMe.md')
+    }
+  })
 }
 
 module.exports = generateMarkdown;
