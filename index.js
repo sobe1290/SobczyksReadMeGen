@@ -1,5 +1,7 @@
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js');
+const renderLicenseSection = require('./utils/generateMarkdown.js');
+
 
 inquirer
   .prompt([{
@@ -18,10 +20,25 @@ inquirer
       type: 'input',
       name: 'Project_Installation',
       message: 'How is your project installed?',
-      default: 'Type in install sumtin'
+      default: 'Install the required package!'
       },
+    {
+      type: 'input',
+      name: 'Project_Usage',
+      message: 'What is the usage procedure for your project?',
+      default: 'Type in the following command " " '
+      },
+      {
+        type: 'list',
+        name: 'Project_License',
+        message: 'What type of license will your project use?',
+        choices: ['Apache License','Boost Software License','GNU GPLv3','MIT','Mozilla Public License','The Unilicense']
+        },
+    
     ])
   .then(answers => {
+    console.log(answers.Project_License);
+    renderLicenseSection(answers);
     generateMarkdown(answers);
   });
 
