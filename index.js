@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
-const generateMarkdown = require('./utils/generateMarkdown.js');
-const renderLicenseSection = require('./utils/generateMarkdown.js');
+const myFunctions = require('./utils/generateMarkdown.js');
+
 
 
 inquirer
@@ -37,8 +37,8 @@ inquirer
     
     ])
   .then(answers => {
-    console.log(answers.Project_License);
-    renderLicenseSection(answers);
-    generateMarkdown(answers);
+    myFunctions.renderLicenseSection(answers);
+    myFunctions.generateMarkdown(answers);
+    
   });
 
