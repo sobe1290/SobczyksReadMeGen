@@ -1,4 +1,3 @@
-// TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 
@@ -21,28 +20,8 @@ inquirer
       message: 'How is your project installed?',
       default: 'Type in install sumtin'
       },
-    // /* Pass your questions in here */
-    // questions
     ])
   .then(answers => {
-    // Use user feedback for... whatever!!
     generateMarkdown(answers);
-    // writeToFile();
   });
 
-// TODO: Create an array of questions for user input
-// const questions = [
-    
-// ];
-
-// // TODO: Create a function to write README file
-// function writeToFile(generateTitle) {
-//   fs.writeFile('freshReadMe.md', generateTitle, (err) =>
-//   err ? console.error(err) : console.log('Success!'))
-// }
-
-// // TODO: Create a function to initialize app
-// function init() {}
-
-// // Function call to initialize app
-// init();
