@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const myFunctions = require('./utils/generateMarkdown.js');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 
 
 
@@ -32,13 +32,11 @@ inquirer
         type: 'list',
         name: 'Project_License',
         message: 'What type of license will your project use?',
-        choices: ['Apache License','Boost Software License','GNU GPLv3','MIT','Mozilla Public License','The Unilicense']
+        choices: ['Apache License','Boost Software License','GNU GPLv3','MIT','Mozilla Public License','The Unlicense']
         },
     
     ])
   .then(answers => {
-    myFunctions.renderLicenseSection(answers);
-    myFunctions.generateMarkdown(answers);
-    
+    generateMarkdown(answers);    
   });
 

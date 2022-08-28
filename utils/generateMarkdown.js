@@ -1,39 +1,48 @@
 const fs = require('fs');
 
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(answers) {
+function generateMarkdown(answers) {  
+//This section of the function sets the license description based on selection
   let chosenLicense = answers.Project_License;
   let licenseDescription;
+  let licenseBadge;
+  let licenseLink;
 
   switch (chosenLicense) {
     case 'Apache License':
-      licenseDescription = 'A permissive license whose main conditions require preservation of copyright and license notices. Contributors provide an express grant of patent rights. Licensed works, modifications, and larger works may be distributed under different terms and without source code.';  
+      licenseDescription = 'Apache License is a permissive license whose main conditions require preservation of copyright and license notices. Contributors provide an express grant of patent rights. Licensed works, modifications, and larger works may be distributed under different terms and without source code.';  
+      licenseBadge= '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'; 
+      licenseLink = '[Link to the Apache Webpage](https://www.apache.org/licenses/LICENSE-2.0)';
+      break;
     case 'Boost Software License':
-      licenseDescription = 'A simple permissive license only requiring preservation of copyright and license notices for source (and not binary) distribution. Licensed works, modifications, and larger works may be distributed under different terms and without source code.';      
+      licenseDescription = 'Boost Software License is a simple permissive license only requiring preservation of copyright and license notices for source (and not binary) distribution. Licensed works, modifications, and larger works may be distributed under different terms and without source code.';   
+      licenseBadge= '[![License](https://img.shields.io/badge/License-Boost_1.0-lightblue.svg)](https://www.boost.org/LICENSE_1_0.txt)'; 
+      licenseLink = '[Link to the Boost Webpage](https://www.boost.org/users/license.html)';
+        break;
     case 'GNU GPLv3':
-      licenseDescription = 'Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.';      
+      licenseDescription = 'Permissions of this strong copyleft license, GNU GPLv3, are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.';   
+      licenseBadge= '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)';  
+      licenseLink = '[Link to the GNU GPL Webpage](https://www.gnu.org/licenses/gpl-3.0.en.html)';
+        break;
     case 'MIT':
-      licenseDescription = 'A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.';    
+      licenseDescription = 'MIT License is a short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.';  
+      licenseBadge= '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'; 
+      licenseLink = '[Link to the MIT Webpage](https://www.mit.edu/~amini/LICENSE.md)'; 
+        break;
     case 'Mozilla Public License':
-      licenseDescription = 'Permissions of this weak copyleft license are conditioned on making available source code of licensed files and modifications of those files under the same license (or in certain cases, one of the GNU licenses). Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. However, a larger work using the licensed work may be distributed under different terms and without source code for files added in the larger work.';      
-    case 'The Unilicense':
-      licenseDescription = 'A license with no conditions whatsoever which dedicates works to the public domain. Unlicensed works, modifications, and larger works may be distributed under different terms and without source code.';      
-  };
-  console.log(licenseDescription);
-};
+      licenseDescription = 'Permissions of this weak copyleft license, Mozilla Public License, are conditioned on making available source code of licensed files and modifications of those files under the same license (or in certain cases, one of the GNU licenses). Copyright and license notices must be preserved. Contributors provide an express grant of patent rights. However, a larger work using the licensed work may be distributed under different terms and without source code for files added in the larger work.'; 
+      licenseBadge= '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL_2.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)';   
+      licenseLink = '[Link to the MPL Webpage](https://www.mozilla.org/en-US/MPL/2.0/)';  
+        break;
+    case 'The Unlicense':
+      licenseDescription = 'The Unlicense is a license with no conditions whatsoever which dedicates works to the public domain. Unlicensed works, modifications, and larger works may be distributed under different terms and without source code.';  
+      licenseBadge= '[![Unlicense](https://img.shields.io/badge/License-Unlicense-blue.svg)](https://unlicense.org/)';
+      licenseLink = '[Link to the Unlicense Webpage](https://unlicense.org/)'    
+        break;
+    };
 
-function generateMarkdown(answers, licenseDescription) {  
+  //This section of the function takes the answers and enters them into the markdown.
   let generatedPage = `
-  # ${answers.Project_Title}\n
+  # ${answers.Project_Title}     ${licenseBadge}\n
   ## Project Description \n
   ${answers.Project_Description}\n
   ## Table of Contents\n
@@ -52,6 +61,7 @@ function generateMarkdown(answers, licenseDescription) {
   ${answers.Project_License}\n
   ### About this License \n
   ${licenseDescription}\n
+  ${licenseLink}\n
   ## Contributing \n
   ## Tests \n
   ## Questions \n
@@ -66,7 +76,5 @@ function generateMarkdown(answers, licenseDescription) {
   })
 }
 
-module.exports = {
-  generateMarkdown,
-  renderLicenseSection,
-}
+module.exports = generateMarkdown
+ 
