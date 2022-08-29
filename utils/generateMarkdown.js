@@ -45,13 +45,13 @@ function generateMarkdown(answers) {
   # ${answers.Project_Title}     ${licenseBadge}\n
   ## Project Description \n
   ${answers.Project_Description}\n
-  ## Table of Contents\n
-    * [Installation](#installation)
-    * [Usage](#usage)
-    * [License](#license)
-    * [Contributing](#contributing)
-    * [Tests](#tests)
-    * [Questions](#questions)\n
+  # Table of Contents\n
+  - [Installation](#installation)\n
+  - [Usage](#usage)\n
+  - [License](#license)\n
+  - [Contributing](#contributing)\n
+  - [Tests](#tests)\n
+  - [Questions](#questions)\n
     
   ## Installation \n
   ${answers.Project_Installation}\n
@@ -63,8 +63,11 @@ function generateMarkdown(answers) {
   ${licenseDescription}\n
   ${licenseLink}\n
   ## Contributing \n
+  ${answers.Project_Contributing}\n
   ## Tests \n
+  ${answers.Project_Tests}\n
   ## Questions \n
+  For questions contact my via Github at https://github.com/${answers.Project_Github} or my email at ${answers.Project_Email}.
   `;
   
   fs.writeFile('freshReadMe.md', generatedPage, (err) => {
