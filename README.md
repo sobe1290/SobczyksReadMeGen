@@ -78,5 +78,7 @@
 
   https://drive.google.com/file/d/1srxQXcBKKRWXdsf7UR_d-RqAirncEt77/view
 
+  An example output has been added to the repo. "freshReadMe.md" is the example output.
+
   
   
