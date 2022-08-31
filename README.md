@@ -74,6 +74,8 @@
 
   Here is a link to a video walkthrough of how to use it:
 
+  https://watch.screencastify.com/v/sUj0gOk6LwNmXb6xl8Sx
+
   https://drive.google.com/file/d/1srxQXcBKKRWXdsf7UR_d-RqAirncEt77/view
 
   
